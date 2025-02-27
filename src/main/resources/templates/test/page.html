@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Page</title>
+</head>
+<body>
+  <h1>Mapping Test Page</h1>
+  <h2>
+    msg:<div th:text="${msg}">
+      <div><a href="/mapping">돌아가기</a></div>
+    </div>
+  </h2>
+<p>
+    <h3>외부 url 사용</h3>
+    <ul>
+        <li><a th:href="@{/mapping/naver}">Naver</a></li>
+        <li><a th:href="@{/mapping/react}">React Page</a></li>
+    </ul>
+</p>
+</body>
+</html>
