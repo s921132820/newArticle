@@ -1,0 +1,21 @@
+#mySQL 셋팅
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/articles
+    username: ${DB_USER}
+    password: ${DB_PW}
+  sql:
+    init:
+      mode: always
+      #always: 매번, embedded : 내장 디비만, never:모든 동작 안함
+  jpa:
+    #spring.sql.init 초기 작업할 때 데이터 생성을 언제할건지
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
