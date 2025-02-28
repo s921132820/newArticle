@@ -29,7 +29,7 @@
       <a th:href="@{|/articles/${dto.id}/delete|}" class="btn btn-danger">Delete</a>
       <a href="/articles">Go to Article List</a>
       <br><br>
-      <div class="card m-2" th:each="comment : ${dto.comments}" th:object="${commnet}">
+      <div class="card m-2" th:each="comment : ${dto.comments}" th:object="${comment}">
           <div class="card-header">
               <span th:text="*{nickname}">Featured</span>
               <a class="btn btn-sm btn-outline-primary">수정</a>

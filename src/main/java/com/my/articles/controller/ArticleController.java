@@ -25,6 +25,11 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
+    @GetMapping("comment")
+    public String showComment() {
+        return "/articles/update_comment";
+    }
+
     @GetMapping({"", "/"})
     public String showAllArticles(Model model) {
         List<ArticleDTO> articles = articleService.getAllArticle();
@@ -38,9 +43,10 @@ public class ArticleController {
             Model model
     ) {
         ArticleDTO dto = articleService.getOneArticle(id);
-        model.addAttribute("dto", dto);
         // 게시글의 id로 요청시 댓글 달려있는지 확인
         System.out.println(dto);
+        model.addAttribute("dto", dto);
+
         return "/articles/show";
     }
 
