@@ -52,7 +52,8 @@ public class CommentApiController {
         } else {
             // 존재하면 댓글 추가하기
             commentService.insertComment(articleId, dto);
-            return ResponseEntity.status(HttpStatus.OK).body(ApiResponseMessage.builder().message("댓글 생성 성공").build());
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(ApiResponseMessage.builder().message("댓글 생성 성공").build());
         }
     }
 
@@ -70,7 +71,8 @@ public class CommentApiController {
         CommentDTO result = getDto(commentId, "댓글 수정 실패");
         // 존재하면 수정 요청
         commentService.updateComment(dto);
-        return ResponseEntity.status(HttpStatus.OK).body(ApiResponseMessage.builder().message("댓글 수정 성공").build());
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(ApiResponseMessage.builder().message("댓글 수정 성공").build());
     }
 
     // 4. 댓글 삭제
@@ -84,7 +86,8 @@ public class CommentApiController {
         // 삭제 요청하기
         commentService.deleteComment(result.getCommentId());
 
-        return ResponseEntity.status(HttpStatus.OK).body(ApiResponseMessage.builder().message("댓글 삭제 성공").build());
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(ApiResponseMessage.builder().message("댓글 삭제 성공").build());
     }
 
     private CommentDTO getDto(Long commentId, String message) {
