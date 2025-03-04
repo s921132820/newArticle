@@ -10,7 +10,7 @@
     password : <input type="text" id="password"><br />
     <button id="btnApi">Send</button><br />
     <button id="btnResponse">Response</button><br />
-    <button id="btnArray">Arrey</button><br />
+    <button id="btnArray">Array</button><br />
     <button id="btnDelete">Delete</button><br />
 
     <script>
@@ -47,14 +47,61 @@
                 }
             })
         })
+
         $("#btnResponse").on("click", function() {
-            alert("btnResponse")
+            $.ajax({
+                url : 'getResponse',
+                type : 'post',
+                dataType : 'json',
+                data : '',
+                success : function(data, status, xhr){
+                    console.log(data)
+                },
+                error : function(xhr, status, error){
+                    console.log(error)
+                }
+            })
         })
+
         $("#btnArray").on("click", function() {
-            alert("btnArray")
+            let jang = {
+                'userid' : $("#userid").val(),
+                'password' : $("#password").val(),
+            }
+            let jin = {
+                'userid' : '안유진',
+                'password' : '1234',
+            }
+            $.ajax({
+                url : 'apiPostArrayTest',
+                type : 'post',
+                dataType : 'json',
+                headers : {
+                    "Content-Type" : "application/json",
+                },
+                data : JSON.stringify([jang, jin]),
+                success : function(data, status, xhr){
+                    console.log(data)
+                },
+                error : function(xhr, status, error){
+                    console.log(error)
+                }
+            })
         })
+
         $("#btnDelete").on("click", function() {
-            alert("btnDelete")
+            $.ajax({
+                url : 'apiTest',
+                type : 'delete',
+                dataType : 'text',
+                data : '',
+                success : function(data, status, xhr){
+                    console.log(data)
+                },
+                error : function(xhr, status, error){
+                    console.log(error)
+                }
+            })
         })
     })
   </script>
