@@ -33,15 +33,15 @@
       <div class="card m-2" th:each="comment : ${dto.comments}" th:object="${comment}">
           <div class="card-header">
               <span th:text="*{nickname}">Featured</span>
-              <a class="btn btn-sm btn-outline-primary" id="comment-update-btn">수정</a>
-              <a class="btn btn-sm btn-outline-primary" id="comment-delete-btn">삭제</a>
+              <a th:href="@{|/articles/comments/view/${comment.commentId}|}" class="btn btn-sm btn-outline-primary" id="comment-update-btn">수정</a>
+              <a th:href="@{|//articles/comments/${comment.commentId}|}" class="btn btn-sm btn-outline-primary" id="comment-delete-btn">삭제</a>
           </div>
           <div class="card-body">
               <p class="card-text" th:text="*{body}">With supporting text below as a natural lead-in to additional content.</p>
           </div>
       </div>
 
-      <form th:action="@{/article/{articleId}/comments/}" method="post">
+      <form th:action="@{|/article/${dto.id}/comments|}" method="post">
           <!-- 닉네임 입력-->
           <div class="m-2">
               <label class="form-label">닉네임</label>
@@ -53,7 +53,7 @@
               <textarea type="text" class="form-control" rows="3" id="new-comment-body" name="body"></textarea>
           </div>
           <!-- 전송버튼-->
-          <button type="button" class="btn btn-primary" id="comment-create-btn">댓글 작성</button>
+          <button type="submit" class="btn btn-primary" id="comment-create-btn">댓글 작성</button>
       </form>
   </div>
 
